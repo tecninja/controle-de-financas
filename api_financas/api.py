@@ -6,8 +6,8 @@ class ApiConexao:
     parametros_db = {
         'host': 'localhost',
         'db_name': 'postgres',
-        'user': 'user_teste',
-        'password': '1234',
+        'user': 'postgres',
+        'password': '1217',
         'sslmode': 'disable'
     }
     
@@ -43,13 +43,22 @@ class ApiPost(ApiConexao):
     def post_poupanca(self):
         pass
     
-    def post_usuario(self):
-        pass
+    def post_usuario(self, nome_usuario: str) -> str:
+        self.nome_usuario = nome_usuario
+        con = self.conexao_db
+        query = f"insert into financas.usuario values \
+(default, '{self.nome_usuario}');"
+        try:
+            con.cursor().execute(query)
+            con.commit()
+        except Exception as e:
+            return f"Erro: {e}"
+        else:
+            return 'Query executada com sucesso' 
     
     def post_cartao_credito(self):
         pass
     
         
 if __name__ == '__main__':
-       
-    print(ApiPost().parametros_db)
+    print(ApiPost().post_usuario('Sarah Mynelle'))
