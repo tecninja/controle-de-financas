@@ -3,13 +3,6 @@ CREATE TABLE usuario (
   nome VARCHAR(45) NOT NULL,
   constraint pk_usuario primary key (id));
  
-insert into usuario values
-(default, 'Esdras Santos'),
-(default, 'Layslla Mynlle');
-
-select * from usuario u;
-
-
 CREATE TABLE receita (
   id serial,
   descricao VARCHAR(60) NOT null,
@@ -28,11 +21,6 @@ comment on column receita.data_prevista is 'Data em que o valor ficou disponíve
 comment on column receita.data_realizada is 'Data em que o valor foi disponibilzado de forma líquida';
 comment on column receita.data_criacao is 'Data em que a receita foi estipulada';
 comment on column receita.atualizado_em is 'Recebe atualização a cada nova alteração nos dados';
-
-
-insert into receita values
-(default, 'Salário', 'F', 1, 2539.0, '2022-11-05',null, current_date, now());
-
 
 CREATE TABLE despesa (
   id serial,
@@ -54,7 +42,6 @@ comment on column despesa.tipo is 'Deve receber se a uma despesa é fixa ou reco
 comment on column despesa.nivel_prioridade is 'recebe valores entre 1 e 3 onde quanto maior, mais importante.';
 comment on column despesa.forma_pgto is 'Recebe para pagamento no cartão de crédito e para pagamento com saldo bancario independente da forma (Ex: pix, ted, doc, saque).';
 
-
 CREATE TABLE poupanca (
   id serial,
   banco VARCHAR(20) NOT NULL,
@@ -68,7 +55,6 @@ CREATE TABLE poupanca (
     ON UPDATE NO ACTION);
  comment on column poupanca.banco is 'Deve receber o nome do banco';
 
-
 create table cartao_credito (
   id serial,
   usuario_id INT NOT NULL,
@@ -81,7 +67,6 @@ create table cartao_credito (
   CONSTRAINT fk_cartao_credito_usuario FOREIGN KEY (usuario_id) references usuario (id) ON DELETE NO action ON UPDATE NO ACTION);
 comment on column cartao_credito.nome is 'COMMENT recebe o nome do caertão (Ex: Nubank)';
 
-
 CREATE TABLE extrato_bancario (
   id serial,
   valor float not null,
@@ -92,8 +77,7 @@ CREATE TABLE extrato_bancario (
   usuario_id int not null,
   constraint pk_extrato_bancario primary key (id),
   constraint fk_extrato_bancario_usuario foreign key (usuario_id) references usuario(id) on delete no action on update no action);
-
- comment on column extrato_bancario.tipo is 'Parametros:PAG: Pagamentos de títulos DEB: Compra a débito PIX: Transferencias (incluindo ted e doc) APL: Aplicações e Poupança REC: Entrada de Receita RES: Resgate de aplicação';
+comment on column extrato_bancario.tipo is 'Parametros:PAG: Pagamentos de títulos DEB: Compra a débito PIX: Transferencias (incluindo ted e doc) APL: Aplicações e Poupança REC: Entrada de Receita RES: Resgate de aplicação';
 comment on column extrato_bancario.instituicao is 'Recebe o nome do banco';
 
 
