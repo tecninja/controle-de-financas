@@ -1,7 +1,7 @@
 import psycopg2 as ps
 import pandas as pd
 
-class Api:
+class ApiConexao:
     
     parametros_db = {
         'host': 'localhost',
@@ -27,11 +27,29 @@ class Api:
     
     def desconectar(self):
         self.conexao_db.close()
-        
+    
+    
+class ApiPost(ApiConexao):
+    
+    def __init__(self) -> None:
+        super().__init__()
+    
+    def post_receita(self):
+        pass
+    
+    def post_despesa(self):
+        pass
+    
+    def post_poupanca(self):
+        pass
+    
+    def post_usuario(self):
+        pass
+    
+    def post_cartao_credito(self):
+        pass
+    
         
 if __name__ == '__main__':
-    usuarios = pd.read_sql_query(
-        sql='select * from financas.usuario',
-        con=Api().conexao_db
-        )
-    print(usuarios)
+       
+    print(ApiPost().parametros_db)
