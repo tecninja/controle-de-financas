@@ -7,8 +7,6 @@ insert into usuario values
 (default, 'Esdras Santos'),
 (default, 'Layslla Mynlle');
 
-select * from usuario u;
-
 
 CREATE TABLE receita (
   id serial,
@@ -33,9 +31,6 @@ comment on column receita.atualizado_em is 'Recebe atualização a cada nova alt
 
 insert into receita values
 (default, 'Salário', 'F', 1, 2539.0, '2022-11-05',null, current_date, now());
-
-select u.nome, r.valor from receita r
-left join usuario u on u.id = r.usuario_id;
 
 
 CREATE TABLE despesa (
