@@ -1,3 +1,5 @@
+from getpass import getpass
+from time import sleep
 import bcrypt
 
 
@@ -5,8 +7,12 @@ class Criptografia:
     
     
     def __init__(self, senha: str) -> None:
-        self.senha = senha.encode('UTF-8')
+        """Classe responsável pela criptografia e comparação das senhas
 
+        Args:
+            senha (str): Recebe a senha a ser criptografada
+        """
+        self.senha = senha.encode('UTF-8')
 
     def criptografar(self) -> str:
         """Metódo para criptografar uma senha
@@ -14,7 +20,6 @@ class Criptografia:
         Returns:
             str: Retorna a senha criptografada
         """
-
         salt = bcrypt.gensalt()
         self.senha = bcrypt.hashpw(self.senha, salt)
         return self.senha
