@@ -1,5 +1,3 @@
-from getpass import getpass
-from time import sleep
 import bcrypt
 
 
