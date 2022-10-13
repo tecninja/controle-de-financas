@@ -3,10 +3,8 @@ from re import S
 way = "C:\\Users\\Esdras Santos\Documents\\GitHub\\controle-de-financas"
 sys.path.insert(0, way)
 
-from select import select
 import psycopg2 as ps
 from senhas.encriptacao_senha import Criptografia
-
 
 
 class ApiConexao:
@@ -179,21 +177,28 @@ class ApiGet(ApiConexao):
         where ua.login = '{cls.user}';"""
         
         cur.execute(query)
-        dados = cur.fetchall()[0]
-        senha_hashed = dados[1].encode('UTF-8')
-        
-        check = Criptografia(cls.password).validacao(
-            senha=cls.password,
-            senha_hash=senha_hashed
-        )
-
-        return check
+        try:
+            dados = cur.fetchall()[0]
+            senha_hashed = dados[1].encode('UTF-8')
+        except IndexError:
+            return False
+        else:
+            try:
+                check = Criptografia(cls.password).validacao(
+                    senha=cls.password,
+                    senha_hash=senha_hashed
+                )
+            except ValueError:
+                return False
+            else:
+                return check
         
         
 if __name__ == '__main__':
-#    print(ApiPost().post_usuario_acesso(login_usuario='esdras_teste'\
-#        ,senha_usuario='esdras_teste', email_usuario='esdras@teste'))
-    validar = ApiGet().GetAcesso(user='esdras_teste', password='esdras_test')
+    user_digitado = input('Informe o usuário: ')
+    senha = input('Informe a senha: ')
+    
+    validar = ApiGet().GetAcesso(user=user_digitado, password=senha)
     if validar:
         print('Acesso liberado')
     else:
