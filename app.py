@@ -8,7 +8,7 @@ def index():
     page = "aut-page.html"
     return render_template(page)
 
-@app.route("/teste")
+@app.route("/index")
 def teste():
     return "pagina de teste"
 
