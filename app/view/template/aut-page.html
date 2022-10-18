@@ -69,17 +69,19 @@
     <header></header>
     <section>
         <div id="container_form">
-            <div class="inputs">
-                <label for="name">Usuário:</label>
-                <input id="usuario" type="text">
-            </div>
-            <div class="inputs">
-                <label for="password">Senha:</label>
-                <input id="senha" type="password">
-            </div>
-            <div class="inputs">
-                <button id="btn_entrar" type="submit">Entrar</button>
-            </div>
+            <form action="https://127.0.0.1:3000/done" method="post">
+                <div class="inputs">
+                    <label for="name">Usuário:</label>
+                    <input id="usuario" name="usuario" type="text" placeholder="Informe o seu usuário">
+                </div>
+                <div class="inputs">
+                    <label for="password">Senha:</label>
+                    <input id="senha" name="senha" type="password" placeholder="Informe a senha">
+                </div>
+                <div class="inputs">
+                    <button id="btn_entrar" type="submit">Entrar</button>
+                </div>
+            </form>
         </div>
     </section>
     <footer></footer>

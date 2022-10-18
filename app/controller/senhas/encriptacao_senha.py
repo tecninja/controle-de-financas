@@ -39,4 +39,4 @@ class Criptografia:
         
 
 if __name__ == '__main__':
-    print(Criptografia('123').criptografar())
+    pass
