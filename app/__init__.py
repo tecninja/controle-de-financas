@@ -15,7 +15,7 @@ class Aplicacao:
     @app.route('/')
     @app.route("/autenticacao")
     def index():
-        page = "view\\template\\aut-page.html"
+        page = "\\view\\template\\login_page.html"
         return render_template(page)
 
     @app.route("/index")
