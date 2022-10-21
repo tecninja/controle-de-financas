@@ -1,2 +1,3 @@
-from ..controller.senhas import *
-from ..controller.api_financas import *
+from senhas import *
+from api_financas import *
+from default import *
