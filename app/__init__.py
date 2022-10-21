@@ -1,7 +1,5 @@
 from flask import Flask
 from flask import render_template
-from flask import redirect
-from flask import url_for
 from flask import request
 import json
 
@@ -15,8 +13,8 @@ class Aplicacao:
     @app.route('/')
     @app.route("/autenticacao")
     def index():
-        page = "\\view\\template\\login_page.html"
-        return render_template(page)
+        page = 'template\\login_page.html'
+        return render_template(template_name_or_list=page)
 
     @app.route("/index")
     def teste():
