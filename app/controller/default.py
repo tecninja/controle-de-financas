@@ -1,9 +1,15 @@
-from app import Aplicacao
+from app import app
 from flask import render_template
 
-app = Aplicacao().app
 
 @app.route("/")
+@app.route("/index")
 def index():
-    return render_template("login_page.html")
+    return render_template("index.html")
+
+
+@app.route("/done?usuario=<usuario>&senha=senha")
+def done(usuario):
+    return render_template("done.html", usuario=usuario)
+
 

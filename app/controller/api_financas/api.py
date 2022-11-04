@@ -1,10 +1,11 @@
-import os, sys
+import sys
 from re import S
 way = "C:\\Users\\Esdras Santos\Documents\\GitHub\\controle-de-financas"
 sys.path.insert(0, way)
+sys.path.append("..")
 
 import psycopg2 as ps
-from senhas.encriptacao_senha import Criptografia
+from ..senhas import Criptografia
 
 
 class ApiConexao:
